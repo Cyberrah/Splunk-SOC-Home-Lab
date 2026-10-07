@@ -1,0 +1,4 @@
+index=wineventlog EventCode=4740 earliest=-24h latest=now
+| eval locked_account=coalesce(TargetUserName, user, Account_Name, "unknown")
+| table _time host locked_account Caller_Computer_Name EventCode _raw
+| sort - _time

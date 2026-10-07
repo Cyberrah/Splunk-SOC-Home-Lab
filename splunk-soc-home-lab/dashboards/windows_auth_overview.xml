@@ -1,0 +1,43 @@
+<form version="1.1" theme="dark">
+  <label>Windows Authentication Overview</label>
+  <description>Training dashboard for Windows authentication events in the home lab. Update index and field names to match your deployment.</description>
+  <fieldset submitButton="false">
+    <input type="time" token="time_range">
+      <label>Time range</label>
+      <default><earliest>-24h@h</earliest><latest>now</latest></default>
+    </input>
+  </fieldset>
+  <row>
+    <panel><single>
+      <title>Failed logons (4625)</title>
+      <search><query>index=wineventlog EventCode=4625</query><earliest>$time_range.earliest$</earliest><latest>$time_range.latest$</latest></search>
+      <option name="drilldown">none</option>
+    </single></panel>
+    <panel><single>
+      <title>Successful logons (4624)</title>
+      <search><query>index=wineventlog EventCode=4624</query><earliest>$time_range.earliest$</earliest><latest>$time_range.latest$</latest></search>
+      <option name="drilldown">none</option>
+    </single></panel>
+    <panel><single>
+      <title>Security log cleared (1102)</title>
+      <search><query>index=wineventlog EventCode=1102</query><earliest>$time_range.earliest$</earliest><latest>$time_range.latest$</latest></search>
+      <option name="drilldown">none</option>
+    </single></panel>
+  </row>
+  <row>
+    <panel><chart>
+      <title>Authentication events over time</title>
+      <search><query>index=wineventlog (EventCode=4624 OR EventCode=4625) | timechart span=15m count by EventCode</query><earliest>$time_range.earliest$</earliest><latest>$time_range.latest$</latest></search>
+      <option name="charting.chart">line</option>
+      <option name="legend.placement">bottom</option>
+    </chart></panel>
+  </row>
+  <row>
+    <panel><table>
+      <title>Recent failed logons</title>
+      <search><query>index=wineventlog EventCode=4625 | eval account=coalesce(user, Account_Name, TargetUserName, "unknown") | eval source_ip=coalesce(src_ip, Source_Network_Address, IpAddress, "unknown") | table _time host account source_ip Logon_Type Failure_Reason | sort - _time</query><earliest>$time_range.earliest$</earliest><latest>$time_range.latest$</latest></search>
+      <option name="count">10</option>
+      <option name="drilldown">none</option>
+    </table></panel>
+  </row>
+</form>

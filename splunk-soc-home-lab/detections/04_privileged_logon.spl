@@ -1,0 +1,4 @@
+index=wineventlog EventCode=4672 earliest=-24h latest=now
+| eval account=coalesce(user, Account_Name, SubjectUserName, TargetUserName, "unknown")
+| table _time host account EventCode SubjectUserName SubjectDomainName PrivilegeList _raw
+| sort - _time

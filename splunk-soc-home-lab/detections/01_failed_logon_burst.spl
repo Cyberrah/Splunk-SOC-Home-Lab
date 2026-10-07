@@ -1,0 +1,7 @@
+index=wineventlog EventCode=4625 earliest=-10m latest=now
+| eval account=coalesce(user, Account_Name, TargetUserName, account_name, "unknown")
+| eval source_ip=coalesce(src_ip, Source_Network_Address, IpAddress, SourceAddress, "unknown")
+| stats count as failures values(host) as targets earliest(_time) as first_seen latest(_time) as last_seen by account source_ip
+| where failures >= 5
+| convert ctime(first_seen) ctime(last_seen)
+| sort - failures

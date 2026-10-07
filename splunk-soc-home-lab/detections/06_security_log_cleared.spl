@@ -1,0 +1,4 @@
+index=wineventlog EventCode=1102 earliest=-7d latest=now
+| eval account=coalesce(user, SubjectUserName, Account_Name, "unknown")
+| table _time host account EventCode SubjectDomainName _raw
+| sort - _time

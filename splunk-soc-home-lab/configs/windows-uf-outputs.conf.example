@@ -1,0 +1,8 @@
+# Replace with Kali's HOST-ONLY IPv4 address. Do not use the Windows VM's IP.
+[tcpout]
+defaultGroup = kali_splunk_receiver
+
+[tcpout:kali_splunk_receiver]
+server = <KALI_HOST_ONLY_IP>:9997
+
+[tcpout-server://<KALI_HOST_ONLY_IP>:9997]

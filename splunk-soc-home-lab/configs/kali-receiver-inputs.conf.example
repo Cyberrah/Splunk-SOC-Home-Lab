@@ -1,0 +1,7 @@
+# Example receiver configuration for Splunk Enterprise on Kali.
+# Preferred setup: enable the receiving port in Splunk Web.
+# If managing configuration by file, merge this stanza into the appropriate
+# local/app config; do not overwrite existing inputs.conf settings.
+
+[splunktcp://9997]
+disabled = 0

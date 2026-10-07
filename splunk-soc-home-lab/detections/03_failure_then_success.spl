@@ -1,0 +1,9 @@
+index=wineventlog earliest=-10m latest=now (EventCode=4624 OR EventCode=4625)
+| eval account=coalesce(user, Account_Name, TargetUserName, account_name, "unknown")
+| eval source_ip=coalesce(src_ip, Source_Network_Address, IpAddress, SourceAddress, "unknown")
+| eval failed=if(EventCode=4625, 1, 0), successful=if(EventCode=4624, 1, 0)
+| bin _time span=10m
+| stats sum(failed) as failures sum(successful) as successes values(host) as hosts by _time account source_ip
+| where failures > 0 AND successes > 0
+| convert ctime(_time)
+| sort - _time
