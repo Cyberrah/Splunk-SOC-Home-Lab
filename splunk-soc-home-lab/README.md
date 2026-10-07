@@ -1,6 +1,6 @@
 # Splunk SOC Home Lab
 
-A practical, GitHub-ready Security Operations Center (SOC) home lab for collecting Windows security events in Splunk Enterprise, investigating authentication activity, and documenting detection engineering work. The lab is designed for a small VirtualBox environment with Kali Linux running Splunk and a Windows 10/11 endpoint running Splunk Universal Forwarder.
+A practical, Security Operations Center (SOC) home lab for collecting Windows security events in Splunk Enterprise, investigating authentication activity, and documenting detection engineering work. The lab is designed for a small VirtualBox environment with Kali Linux running Splunk and a Windows 11 endpoint running Splunk Universal Forwarder.
 
 > **Lab scope:** Use only virtual machines and accounts you own. Keep the host-only network isolated. This is a learning lab, not a production deployment or a claim of real-world incident response experience.
 
