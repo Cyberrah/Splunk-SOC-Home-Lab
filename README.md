@@ -13,6 +13,10 @@ A VirtualBox lab project for collecting Windows security events with Splunk Univ
 - [Investigation workflow](splunk-soc-home-lab/docs/investigation-workflow.md)
 - [Incident report template](splunk-soc-home-lab/docs/incident-report-template.md)
 
+## Validation plan
+
+[Use the six-detection validation matrix](splunk-soc-home-lab/docs/detection-validation-matrix.md) for positive, negative and boundary cases, known query limitations and an execution-record template. New test results remain pending.
+
 ## Detection coverage
 
 Failed-logon bursts, password-spray patterns, failures and success within the same time bucket, privileged logons, account lockouts, and security-log clearing.
