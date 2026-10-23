@@ -4,7 +4,7 @@ A practical, Security Operations Center (SOC) home lab for collecting Windows se
 
 > **Lab scope:** Use only virtual machines and accounts you own. Keep the host-only network isolated. This is a learning lab, not a production deployment or a claim of real-world incident response experience.
 
-## What this project demonstrates
+## Learning objectives
 
 - SIEM installation and Windows event ingestion
 - Log source validation and basic field normalization
@@ -29,7 +29,6 @@ Recommended VirtualBox networking: give both VMs **Adapter 1: NAT** for updates 
 .
 ├── README.md
 ├── LICENSE
-├── .gitignore
 ├── docs/
 │   ├── architecture-and-scope.md
 │   ├── deployment-guide.md
@@ -72,16 +71,18 @@ The examples use `index=wineventlog` and Windows Security event IDs. If your eve
 |---|---|---:|---|
 | DET-001 | Failed logon burst | 5 failures in 10 minutes | 4625 |
 | DET-002 | Password spray pattern | 10 failures across 5+ users in 10 minutes | 4625 |
-| DET-003 | Failure followed by successful logon | Failure and success in same 10-minute bucket | 4624, 4625 |
+| DET-003 | Failures and success in the same time bucket | Failure and success in same 10-minute bucket | 4624, 4625 |
 | DET-004 | Special privileges assigned at logon | Any matching event for review | 4672 |
 | DET-005 | Account lockout | Any matching event for review | 4740 |
 | DET-006 | Security audit log cleared | Any matching event; high priority | 1102 |
 
 Thresholds are starter values for a quiet home lab. They are not universal production thresholds. Add exclusions only when you can explain and document them.
 
-## Evidence to add before publishing
+## Evidence and validation
 
-Add your own redacted screenshots under `docs/images/` (for example, a VirtualBox network view, Splunk receiver status, a successful event search, and one detection result). Do not commit passwords, tokens, public IPs, personal data, VM snapshots, or unredacted security events. See `.gitignore` and the evidence checklist in the deployment guide.
+A completed related investigation is published in the **[Splunk and Suricata Telemetry Pipeline](https://github.com/Cyberrah/Log-Analysis-Pipeline-Ingesting-and-Analysing-Security-Telemetry-with-Splunk-Enterprise-and-Suricata)**, with a [SOC report](https://github.com/Cyberrah/Log-Analysis-Pipeline-Ingesting-and-Analysing-Security-Telemetry-with-Splunk-Enterprise-and-Suricata/blob/main/reports/Kestrel_SOC_Investigation_Report.pdf), screenshots and an SSH correlation timeline. It uses different indexes and Windows field extraction from these starter examples; it does not validate all six detections here.
+
+Add your own redacted screenshots under `docs/images/` (for example, a VirtualBox network view, Splunk receiver status, a successful event search, and one detection result). Do not commit passwords, tokens, public IPs, personal data, VM snapshots, or unredacted security events. Follow the evidence checklist in the deployment guide.
 
 ## Troubleshooting in brief
 
