@@ -21,12 +21,22 @@ The searches are starting examples. Field mappings, time windows, thresholds, an
 
 ## Evidence status
 
-The repository currently publishes configuration, detection, dashboard, and documentation assets. Redacted screenshots, recorded test outcomes, and a completed investigation have not yet been published. The incident report is a template.
+This repository provides reusable Windows-focused configuration, detection, dashboard and documentation assets. Its incident report remains a template.
 
-Next steps:
-- Capture successful Windows event ingestion and record the lab configuration.
-- Test each detection and document expected versus observed results.
-- Add redacted dashboard and detection screenshots.
-- Complete one investigation with a timeline, findings, false-positive considerations, and response recommendations.
+The related **[Splunk and Suricata Telemetry Pipeline](https://github.com/Cyberrah/Log-Analysis-Pipeline-Ingesting-and-Analysing-Security-Telemetry-with-Splunk-Enterprise-and-Suricata)** now contains the completed Kestrel lab investigation:
+
+- [Final SOC report](https://github.com/Cyberrah/Log-Analysis-Pipeline-Ingesting-and-Analysing-Security-Telemetry-with-Splunk-Enterprise-and-Suricata/blob/main/reports/Kestrel_SOC_Investigation_Report.pdf)
+- [Windows scheduled-alert evidence](https://github.com/Cyberrah/Log-Analysis-Pipeline-Ingesting-and-Analysing-Security-Telemetry-with-Splunk-Enterprise-and-Suricata/blob/main/screenshots/windows-triggered-alerts.png)
+- [Dashboard screenshot](https://github.com/Cyberrah/Log-Analysis-Pipeline-Ingesting-and-Analysing-Security-Telemetry-with-Splunk-Enterprise-and-Suricata/blob/main/screenshots/soc-dashboard.png)
+- [SSH host/network correlation timeline](https://github.com/Cyberrah/Log-Analysis-Pipeline-Ingesting-and-Analysing-Security-Telemetry-with-Splunk-Enterprise-and-Suricata/blob/main/docs/ssh-investigation.md)
+- [Log source inventory](https://github.com/Cyberrah/Log-Analysis-Pipeline-Ingesting-and-Analysing-Security-Telemetry-with-Splunk-Enterprise-and-Suricata/blob/main/inventory/Kestrel_Log_Source_Inventory.xlsx)
+
+That project uses `windows`, `linux` and `suricata` indexes; this starter lab uses `wineventlog`. Its Windows detection also uses explicit XML field extraction. Use the settings and searches appropriate to each project. The Kestrel evidence does not establish that all six examples in this repository have been tested.
+
+Next steps for these starter assets:
+
+- Validate each detection against local events and record expected versus observed results.
+- Record field mappings, thresholds, exclusions and false positives.
+- Keep the dashboard XML here distinct from the Kestrel dashboard, whose export is not yet published.
 
 [Read the full lab guide](splunk-soc-home-lab/README.md) · [Return to portfolio](https://github.com/Cyberrah/Welcome-to-my-repository)
